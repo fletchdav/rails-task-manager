@@ -1,0 +1,16 @@
+<h1>List of tasks</h1>
+<ul>
+<% @tasks.each do |task| %>
+<li>
+  <% if task.completed %>
+    <i class="fa fa-check-square-o" aria-hidden="true"> </i>
+  <% else %>
+    <i class="fa fa-square-o" aria-hidden="true"> </i>
+  <% end %>
+  <%= link_to("#{task.title}",task_path(task)) %>
+  <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe,task_delete_path(task), method: :delete %>
+</li>
+<% end %>
+</ul>
+
+<h2> <%= link_to("+ add a new task",tasks_new_path) %></h2>
